@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2018-09-10 21:54:29 / 修改时间：22:00:23" itemprop="dateCreated datePublished" datetime="2018-09-10T21:54:29+08:00">2018-09-10</time>
+              <time title="创建时间：2018-09-10 21:54:29 / 修改时间：22:22:45" itemprop="dateCreated datePublished" datetime="2018-09-10T21:54:29+08:00">2018-09-10</time>
             
 
             
@@ -443,64 +443,32 @@
 </tr>
 <tr>
 <td>(?:pattern)</td>
-<td>非获取匹配，匹配pattern但不获取匹配结果，不进行存储供以后使用。这在使用或字符“(\</td>
-<td>)”来组合一个模式的各个部分时很有用。例如“industr(?:y\</td>
-<td>ies)”就是一个比“industry\</td>
-<td>industries”更简略的表达式。</td>
+<td>非获取匹配，匹配pattern但不获取匹配结果，不进行存储供以后使用。这在使用或字符“(&#124;)”来组合一个模式的各个部分时很有用。例如“industr(?:y&#124;ies)”就是一个比“industry&#124;industries”更简略的表达式。</td>
 <td></td>
 </tr>
 <tr>
 <td>(?=pattern)</td>
-<td>非获取匹配，正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如，“Windows(?=95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)”能匹配“Windows2000”中的“Windows”，但不能匹配“Windows3.1”中的“Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+<td>非获取匹配，正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如，“Windows(?=95&#124;98&#124;NT&#124;2000)”能匹配“Windows2000”中的“Windows”，但不能匹配“Windows3.1”中的“Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
 <td></td>
 </tr>
 <tr>
 <td>(?!pattern)</td>
-<td>非获取匹配，正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如“Windows(?!95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)”能匹配“Windows3.1”中的“Windows”，但不能匹配“Windows2000”中的“Windows”。</td>
+<td>非获取匹配，正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如“Windows(?95&#124;98&#124;NT&#124;2000)”能匹配“Windows3.1”中的“Windows”，但不能匹配“Windows2000”中的“Windows”。</td>
 <td></td>
 </tr>
 <tr>
 <td>(?&lt;=pattern)</td>
-<td>非获取匹配，反向肯定预查，与正向肯定预查类似，只是方向相反。例如，“(?&lt;=95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)Windows”能匹配“2000Windows”中的“Windows”，但不能匹配“3.1Windows”中的“Windows”。“(\?&lt;=95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)Windows”目前在python3.6中re模块测试会报错，用“\</td>
-<td>”连接的字符串长度必须一样，这里“95\</td>
-<td>98\</td>
-<td>NT”的长度都是2，“2000”的长度是4，会报错。</td>
+<td>非获取匹配，反向肯定预查，与正向肯定预查类似，只是方向相反。例如，“(?&lt;=95&#124;98&#124;NT&#124;2000)Windows”能匹配“2000Windows”中的“Windows”，但不能匹配“3.1Windows”中的“Windows”。“(\?&lt;=95&#124;98&#124;NT&#124;2000)Windows”目前在python3.6中re模块测试会报错，用“&#124;”连接的字符串长度必须一样，这里“95&#124;98&#124;NT”的长度都是2，“2000”的长度是4，会报错。</td>
 <td></td>
 </tr>
 <tr>
 <td>(\?\&lt;!pattern)</td>
-<td>非获取匹配，反向否定预查，与正向否定预查类似，只是方向相反。例如“(?&lt;!95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)Windows”能匹配“3.1Windows”中的“Windows”，但不能匹配“2000Windows”中的“Windows”。这个地方不正确，有问题此处用或任意一项都不能超过2位，如“(?&lt;!95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>20)Windows正确，“(?&lt;!95\</td>
-<td>980\</td>
-<td>NT\</td>
-<td>20)Windows 报错，若是单独使用则无限制，如(?&lt;!2000)Windows 正确匹配。同上，这里在python3.6中re模块中字符串长度要一致，并不是一定为2，比如“(?&lt;!1995\</td>
-<td>1998\</td>
-<td>NTNT\</td>
-<td>2000)Windows”也是可以的。</td>
+<td>非获取匹配，反向否定预查，与正向否定预查类似，只是方向相反。例如“(?&lt;&#124;95&#124;98&#124;NT&#124;2000)Windows”能匹配“3.1Windows”中的“Windows”，但不能匹配“2000Windows”中的“Windows”。这个地方不正确，有问题此处用或任意一项都不能超过2位，如“(?\&lt;95&#124;98&#124;NT&#124;2000)Windows正确，“(?\&lt;95&#124;98&#124;NT&#124;2000)Windows 报错，若是单独使用则无限制，如(?&lt;!2000)Windows 正确匹配。同上，这里在python3.6中re模块中字符串长度要一致，并不是一定为2，比如“(?\&lt;95&#124;98&#124;NT&#124;2000)Windows”也是可以的。</td>
 <td></td>
 </tr>
 <tr>
-<td>x\</td>
-<td>y</td>
-<td>匹配x或y。例如，“z\</td>
-<td>food”能匹配“z”或“food”(此处请谨慎)。“[zf]ood”则匹配“zood”或“food”。</td>
+<td>x&#124;y</td>
+<td>匹配x或y。例如，“z&#124;food”能匹配“z”或“food”(此处请谨慎)。“[zf]ood”则匹配“zood”或“food”。</td>
 <td></td>
 </tr>
 <tr>
@@ -511,6 +479,7 @@
 <tr>
 <td>[^xyz]</td>
 <td>负值字符集合。匹配未包含的任意字符。例如，“[^abc]”可以匹配“plain”中的“plin”。</td>
+<td></td>
 </tr>
 <tr>
 <td>[a-z]</td>
@@ -570,46 +539,57 @@
 <tr>
 <td>\S</td>
 <td>匹配任何可见字符。等价于[^ \f\n\r\t\v]。</td>
+<td></td>
 </tr>
 <tr>
 <td>\t</td>
 <td>匹配一个制表符。等价于\x09和\cI。</td>
+<td></td>
 </tr>
 <tr>
 <td>\v</td>
 <td>匹配一个垂直制表符。等价于\x0b和\cK。</td>
+<td></td>
 </tr>
 <tr>
 <td>\w</td>
 <td>匹配包括下划线的任何单词字符。类似但不等价于“[A-Za-z0-9_]”，这里的”单词”字符使用Unicode字符集。</td>
+<td></td>
 </tr>
 <tr>
 <td>\W</td>
 <td>匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。</td>
+<td></td>
 </tr>
 <tr>
 <td>\xn</td>
 <td>匹配n，其中n为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，“\x41”匹配“A”。“\x041”则等价于“\x04&amp;1”。正则表达式中可以使用ASCII编码。</td>
+<td></td>
 </tr>
 <tr>
 <td>\num</td>
 <td>匹配num，其中num是一个正整数。对所获取的匹配的引用。例如，“(.)\1”匹配两个连续的相同字符。</td>
+<td></td>
 </tr>
 <tr>
 <td>\n</td>
 <td>标识一个八进制转义值或一个向后引用。如果\n之前至少n个获取的子表达式，则n为向后引用。否则，如果n为八进制数字（0-7），则n为一个八进制转义值。</td>
+<td></td>
 </tr>
 <tr>
 <td>\nm</td>
 <td>标识一个八进制转义值或一个向后引用。如果\nm之前至少有nm个获得子表达式，则nm为向后引用。如果\nm之前至少有n个获取，则n为一个后跟文字m的向后引用。如果前面的条件都不满足，若n和m均为八进制数字（0-7），则\nm将匹配八进制转义值nm。</td>
+<td></td>
 </tr>
 <tr>
 <td>\nml</td>
 <td>如果n为八进制数字（0-7），且m和l均为八进制数字（0-7），则匹配八进制转义值nml。</td>
+<td></td>
 </tr>
 <tr>
 <td>\un</td>
 <td>匹配n，其中n是一个用四个十六进制数字表示的Unicode字符。例如，\u00A9匹配版权符号（\&copy;）。</td>
+<td></td>
 </tr>
 <tr>
 <td>\p{P}</td>
@@ -619,16 +599,17 @@
 <tr>
 <td>\&lt; ></td>
 <td>匹配词（word）的开始（\&lt;）和结束（>）。例如正则表达式\&lt;the>能够匹配字符串”for the wise”中的”the”，但是不能匹配字符串”otherwise”中的”the”。注意：这个元字符不是所有的软件都支持的。</td>
+<td></td>
 </tr>
 <tr>
 <td>( )</td>
 <td>将( 和 ) 之间的表达式定义为“组”（group），并且将匹配这个表达式的字符保存到一个临时区域（一个正则表达式中最多可以保存9个），它们可以用 \1 到\9 的符号来引用。</td>
+<td></td>
 </tr>
 <tr>
-<td>\</td>
+<td>&#124;</td>
+<td>将两个匹配条件进行逻辑“或”（Or）运算。例如正则表达式(him&#124;her) 匹配”it belongs to him”和”it belongs to her”，但是不能匹配”it belongs to them.”。注意：这个元字符不是所有的软件都支持的。</td>
 <td></td>
-<td>将两个匹配条件进行逻辑“或”（Or）运算。例如正则表达式(him\</td>
-<td>her) 匹配”it belongs to him”和”it belongs to her”，但是不能匹配”it belongs to them.”。注意：这个元字符不是所有的软件都支持的。</td>
 </tr>
 </tbody>
 </table>
