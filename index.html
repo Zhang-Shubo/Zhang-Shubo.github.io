@@ -285,6 +285,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/python中的骚操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Supo Zhang">
+      <meta itemprop="description" content="I'm A man who constantly to pursue self-breakthrough and not satisfy current situation">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pandora's box">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/12/python中的骚操作/" itemprop="url">
+                  python中的骚操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-12 22:23:44 / 修改时间：22:45:23" itemprop="dateCreated datePublished" datetime="2018-09-12T22:23:44+08:00">2018-09-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Python的魅力"><a href="#Python的魅力" class="headerlink" title="Python的魅力"></a>Python的魅力</h3><p>Python是一个给人持续惊喜的编程语言，在读python代码的时候，读着读着就会发现，python还可以这样使用。本文用来收集python 的奇葩语法的。</p>
+<h4 id="1-lambda语法"><a href="#1-lambda语法" class="headerlink" title="1. lambda语法"></a>1. lambda语法</h4><p>lambda 是一行没有名字的函数，也称为匿名函数，在C++中也有这种语法。其具体用法为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lambda params:f(params)</span><br></pre></td></tr></table></figure></p>
+<p>例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = lambda x,y:(x+y)</span><br><span class="line">z(1,2) ==&gt;3</span><br></pre></td></tr></table></figure></p>
+<p>还有一些其他特殊用法如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [(1,2),(5,6),(3,4),(6,2)]</span><br><span class="line">a.sort(key=lambda x:x[1])</span><br></pre></td></tr></table></figure></p>
+<p>列表并行排序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = zip(list1, list2)</span><br><span class="line">data = sorted(data)</span><br><span class="line">list1, list2 = map(lambda t: list(t), zip(*data))</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-b-if-c-else-d"><a href="#2-b-if-c-else-d" class="headerlink" title="2. b if c else d"></a>2. b if c else d</h4><p>相当于C++中 c?b:d,可用于任何判断一个表达式，而取两个值得情况<br>如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a = 46</span><br><span class="line">$ <span class="built_in">print</span>(a,<span class="string">"is"</span>,<span class="string">"even"</span> <span class="keyword">if</span> a%2==0 <span class="keyword">else</span> <span class="string">"odd"</span>)</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-a-b-for-in-range-c"><a href="#3-a-b-for-in-range-c" class="headerlink" title="3. a = [b for _ in range(c)]"></a>3. a = [b for _ in range(c)]</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> … <span class="keyword">in</span> … 产生的是一个generator,迭代生成一个列表，有趣的是可以与<span class="keyword">if</span> <span class="keyword">else</span>连用</span><br><span class="line">l1 = [1,3,2,-1,-2,-3]</span><br><span class="line">l2 = [x <span class="keyword">if</span> x &gt;0 <span class="keyword">else</span> 0 <span class="keyword">for</span> x <span class="keyword">in</span> l1]</span><br><span class="line">l2 = [1,3,2,0,0,0]</span><br></pre></td></tr></table></figure>
+<h4 id="4-generator"><a href="#4-generator" class="headerlink" title="4.    generator"></a>4.    generator</h4><p>[深度剖析generator] (<a href="http://python.jobbole.com/81911/" target="_blank" rel="noopener">http://python.jobbole.com/81911/</a>)</p>
+<h4 id="5-python定义的系统标识符"><a href="#5-python定义的系统标识符" class="headerlink" title="5.    python定义的系统标识符"></a>5.    python定义的系统标识符</h4><ul>
+<li>5.1    Class1.<strong>name</strong> # 类型名称 ‘Class1’</li>
+<li>5.2    Class1.<strong>module</strong> # 类型所在模块 ‘<strong>main</strong>‘</li>
+<li>5.3    Class1.<strong>bases</strong> # 类型所继承的基类 (<type 'object'="">,)</type></li>
+<li>5.4    Class1.<strong>dict</strong> # 类型字典，存储所有类型成员信息。 <dictproxy object="" at="" 0x00d3ad70=""></dictproxy></li>
+<li>5.5    Class1().<strong>class</strong> # 类型 <class '__main__.class1'=""></class></li>
+<li>5.6    Class1().<strong>module</strong> # 实例类型所在模块 ‘<strong>main</strong>‘</li>
+<li>5.7    Class1().<strong>dict</strong> # 对象字典，存储所有实例成员信息。 {‘i’: 1234}</li>
+<li>5.8    <strong>repr</strong> #名称的官方输出</li>
+<li>5.9    <strong>version</strong> 版本</li>
+</ul>
+<h4 id="6-init-py"><a href="#6-init-py" class="headerlink" title="6.    __init__.py"></a>6.    __init__.py</h4><p>放在文件夹内可以把文件夹名字作为类导入</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/初步了解正则表达式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1024,7 +1183,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
