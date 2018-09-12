@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2018-09-12 22:23:44 / 修改时间：22:45:23" itemprop="dateCreated datePublished" datetime="2018-09-12T22:23:44+08:00">2018-09-12</time>
+              <time title="创建时间：2018-09-12 22:23:44 / 修改时间：22:49:36" itemprop="dateCreated datePublished" datetime="2018-09-12T22:23:44+08:00">2018-09-12</time>
             
 
             
@@ -378,17 +378,17 @@
 <p>列表并行排序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = zip(list1, list2)</span><br><span class="line">data = sorted(data)</span><br><span class="line">list1, list2 = map(lambda t: list(t), zip(*data))</span><br></pre></td></tr></table></figure></p>
 <h4 id="2-b-if-c-else-d"><a href="#2-b-if-c-else-d" class="headerlink" title="2. b if c else d"></a>2. b if c else d</h4><p>相当于C++中 c?b:d,可用于任何判断一个表达式，而取两个值得情况<br>如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a = 46</span><br><span class="line">$ <span class="built_in">print</span>(a,<span class="string">"is"</span>,<span class="string">"even"</span> <span class="keyword">if</span> a%2==0 <span class="keyword">else</span> <span class="string">"odd"</span>)</span><br></pre></td></tr></table></figure></p>
 <h4 id="3-a-b-for-in-range-c"><a href="#3-a-b-for-in-range-c" class="headerlink" title="3. a = [b for _ in range(c)]"></a>3. a = [b for _ in range(c)]</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> … <span class="keyword">in</span> … 产生的是一个generator,迭代生成一个列表，有趣的是可以与<span class="keyword">if</span> <span class="keyword">else</span>连用</span><br><span class="line">l1 = [1,3,2,-1,-2,-3]</span><br><span class="line">l2 = [x <span class="keyword">if</span> x &gt;0 <span class="keyword">else</span> 0 <span class="keyword">for</span> x <span class="keyword">in</span> l1]</span><br><span class="line">l2 = [1,3,2,0,0,0]</span><br></pre></td></tr></table></figure>
-<h4 id="4-generator"><a href="#4-generator" class="headerlink" title="4.    generator"></a>4.    generator</h4><p>[深度剖析generator] (<a href="http://python.jobbole.com/81911/" target="_blank" rel="noopener">http://python.jobbole.com/81911/</a>)</p>
+<h4 id="4-generator"><a href="#4-generator" class="headerlink" title="4.    generator"></a>4.    generator</h4><p><a href="http://python.jobbole.com/81911/" target="_blank" rel="noopener">深度剖析generator</a></p>
 <h4 id="5-python定义的系统标识符"><a href="#5-python定义的系统标识符" class="headerlink" title="5.    python定义的系统标识符"></a>5.    python定义的系统标识符</h4><ul>
-<li>5.1    Class1.<strong>name</strong> # 类型名称 ‘Class1’</li>
-<li>5.2    Class1.<strong>module</strong> # 类型所在模块 ‘<strong>main</strong>‘</li>
-<li>5.3    Class1.<strong>bases</strong> # 类型所继承的基类 (<type 'object'="">,)</type></li>
-<li>5.4    Class1.<strong>dict</strong> # 类型字典，存储所有类型成员信息。 <dictproxy object="" at="" 0x00d3ad70=""></dictproxy></li>
-<li>5.5    Class1().<strong>class</strong> # 类型 <class '__main__.class1'=""></class></li>
-<li>5.6    Class1().<strong>module</strong> # 实例类型所在模块 ‘<strong>main</strong>‘</li>
-<li>5.7    Class1().<strong>dict</strong> # 对象字典，存储所有实例成员信息。 {‘i’: 1234}</li>
-<li>5.8    <strong>repr</strong> #名称的官方输出</li>
-<li>5.9    <strong>version</strong> 版本</li>
+<li>5.1    Class1.__name__ # 类型名称 ‘Class1’</li>
+<li>5.2    Class1.__module__ # 类型所在模块 ‘<strong>main</strong>‘</li>
+<li>5.3    Class1.__bases__ # 类型所继承的基类 (<type 'object'="">,)</type></li>
+<li>5.4    Class1.__dict__ # 类型字典，存储所有类型成员信息。 <dictproxy object="" at="" 0x00d3ad70=""></dictproxy></li>
+<li>5.5    Class1().__class__ # 类型 <class '__main__.class1'=""></class></li>
+<li>5.6    Class1().__module__ # 实例类型所在模块 ‘<strong>main</strong>‘</li>
+<li>5.7    Class1().__dict__ # 对象字典，存储所有实例成员信息。 {‘i’: 1234}</li>
+<li>5.8 __repr__ #名称的官方输出</li>
+<li>5.9    __version__ 版本</li>
 </ul>
 <h4 id="6-init-py"><a href="#6-init-py" class="headerlink" title="6.    __init__.py"></a>6.    __init__.py</h4><p>放在文件夹内可以把文件夹名字作为类导入</p>
 
