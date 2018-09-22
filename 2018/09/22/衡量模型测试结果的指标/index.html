@@ -108,27 +108,28 @@
 
 
 
-  <meta name="keywords" content="Artificial Intelligence">
+  <meta name="description" content="衡量模型测试结果的指标在衡量训练好的模型预测结果有很多，如准确率、精确率、召回率等等。刚接触这些概念的时候，总是有点懵，因此留下此文，以备他日查看。 首先介绍一些概念(参考维基百科)：  准确率与精确率准确率(accuracy)是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。精确率(precision)测量结果与被测量（约定）真值的一致程度。 好像走错">
+<meta name="keywords" content="Artificial Intelligence">
 <meta property="og:type" content="article">
-<meta property="og:title" content="锦绣民俗村">
-<meta property="og:url" content="http://yoursite.com/2018/09/12/锦绣民俗村/index.html">
+<meta property="og:title" content="衡量模型测试结果的指标">
+<meta property="og:url" content="http://yoursite.com/2018/09/22/衡量模型测试结果的指标/index.html">
 <meta property="og:site_name" content="Pandora&#39;s box">
+<meta property="og:description" content="衡量模型测试结果的指标在衡量训练好的模型预测结果有很多，如准确率、精确率、召回率等等。刚接触这些概念的时候，总是有点懵，因此留下此文，以备他日查看。 首先介绍一些概念(参考维基百科)：  准确率与精确率准确率(accuracy)是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。精确率(precision)测量结果与被测量（约定）真值的一致程度。 好像走错">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/09/12/锦绣民俗村/p1.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/09/12/锦绣民俗村/p2.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/09/12/锦绣民俗村/p3.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/09/12/锦绣民俗村/p4.jpg">
-<meta property="og:updated_time" content="2018-09-12T15:48:14.595Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/22/衡量模型测试结果的指标/accuracy_and_precision.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/09/22/衡量模型测试结果的指标/准确率.jpg">
+<meta property="og:updated_time" content="2018-09-22T11:06:43.686Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="锦绣民俗村">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/12/锦绣民俗村/p1.jpg">
+<meta name="twitter:title" content="衡量模型测试结果的指标">
+<meta name="twitter:description" content="衡量模型测试结果的指标在衡量训练好的模型预测结果有很多，如准确率、精确率、召回率等等。刚接触这些概念的时候，总是有点懵，因此留下此文，以备他日查看。 首先介绍一些概念(参考维基百科)：  准确率与精确率准确率(accuracy)是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。精确率(precision)测量结果与被测量（约定）真值的一致程度。 好像走错">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/22/衡量模型测试结果的指标/accuracy_and_precision.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/12/锦绣民俗村/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/22/衡量模型测试结果的指标/"/>
 
 
 
@@ -138,7 +139,7 @@
   };
 </script>
 
-  <title>锦绣民俗村 | Pandora's box</title>
+  <title>衡量模型测试结果的指标 | Pandora's box</title>
   
 
 
@@ -287,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/锦绣民俗村/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/22/衡量模型测试结果的指标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Supo Zhang">
@@ -304,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">锦绣民俗村
+          <h1 class="post-title" itemprop="name headline">衡量模型测试结果的指标
               
             
           </h1>
@@ -329,7 +330,7 @@
                 
               
 
-              <time title="创建时间：2018-09-12 23:15:22 / 修改时间：23:48:14" itemprop="dateCreated datePublished" datetime="2018-09-12T23:15:22+08:00">2018-09-12</time>
+              <time title="创建时间：2018-09-22 17:25:16 / 修改时间：19:06:43" itemprop="dateCreated datePublished" datetime="2018-09-22T17:25:16+08:00">2018-09-22</time>
             
 
             
@@ -367,7 +368,20 @@
       
 
       
-        <h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/09/12/锦绣民俗村/p1.jpg" alt="P1"></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="/2018/09/12/锦绣民俗村/p2.jpg" alt="P2"></h2><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="/2018/09/12/锦绣民俗村/p3.jpg" alt="P3"></h2><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="/2018/09/12/锦绣民俗村/p4.jpg" alt="P4"></h2>
+        <h2 id="衡量模型测试结果的指标"><a href="#衡量模型测试结果的指标" class="headerlink" title="衡量模型测试结果的指标"></a>衡量模型测试结果的指标</h2><p>在衡量训练好的模型预测结果有很多，如准确率、精确率、召回率等等。刚接触这些概念的时候，总是有点懵，因此留下此文，以备他日查看。</p>
+<p>首先介绍一些概念(参考维基百科)：</p>
+<hr>
+<h4 id="准确率与精确率"><a href="#准确率与精确率" class="headerlink" title="准确率与精确率"></a>准确率与精确率</h4><p><strong>准确率(accuracy)</strong>是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。<br><strong>精确率(precision)</strong>测量结果与被测量（约定）真值的一致程度。</p>
+<p>好像走错片场了，这是测量的概念，在上科学仪器时学的，这里回顾一下</p>
+<p><img src="/2018/09/22/衡量模型测试结果的指标/accuracy_and_precision.jpg" alt="P1"></p>
+<h4 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h4><p><strong>precision </strong>(also called positive predictive value) is the fraction of relevant instances among the retrieved instances,</p>
+<p><strong>recall</strong> (also known as sensitivity) is the fraction of relevant instances that have been retrieved over the total amount of relevant instances.</p>
+<p><img src="/2018/09/22/衡量模型测试结果的指标/准确率.jpg" alt="P1"></p>
+<p>以上图为例<br>精确率为：<br>$$  P = TP/(TP+FN)  $$<br>精确率是指预测正确的正类与预测的全部正类之比</p>
+<p>召回率为：<br>$$  R = TP/(TP+FP)  $$<br>召回率，就是预测正确的正类与实际正类总数之比，FN是没预测出来的正类。<br>医院要求召回率要很高，假设确诊癌症为positive，本来是癌症却没诊断出癌症，那医术实在不敢恭维。</p>
+<p>但常常精确率与召回率是互斥的，提高了精确率，召回率就低了，因此提出了F1 score<br>$$ F1 = 2PR/(P+R) $$</p>
+<p>是不是很熟悉，像算电阻并联后的总电阻值，并联的电阻值小于任何一个电阻的值，但是两个一样的电阻，并联后只有一半大小，为了归一化，乘了一个2。F1值综合了P与R，只有都大时，F1才更大，单纯提高一个，效果可能不升反降。</p>
+
       
     </div>
 
@@ -394,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/12/python中的骚操作/" rel="next" title="python中的骚操作">
-                <i class="fa fa-chevron-left"></i> python中的骚操作
+              <a href="/2018/09/12/锦绣民俗村/" rel="next" title="锦绣民俗村">
+                <i class="fa fa-chevron-left"></i> 锦绣民俗村
               </a>
             
           </div>
@@ -403,10 +417,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/22/衡量模型测试结果的指标/" rel="prev" title="衡量模型测试结果的指标">
-                衡量模型测试结果的指标 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -516,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-2"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-3"><span class="nav-number">4.</span> <span class="nav-text"></span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#衡量模型测试结果的指标"><span class="nav-number">1.</span> <span class="nav-text">衡量模型测试结果的指标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准确率与精确率"><span class="nav-number">1.0.1.</span> <span class="nav-text">准确率与精确率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#精确率与召回率"><span class="nav-number">1.0.2.</span> <span class="nav-text">精确率与召回率</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
