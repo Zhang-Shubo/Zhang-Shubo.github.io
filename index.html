@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2018-09-22 17:25:16 / 修改时间：20:39:52" itemprop="dateCreated datePublished" datetime="2018-09-22T17:25:16+08:00">2018-09-22</time>
+              <time title="创建时间：2018-09-22 17:25:16 / 修改时间：20:49:49" itemprop="dateCreated datePublished" datetime="2018-09-22T17:25:16+08:00">2018-09-22</time>
             
 
             
@@ -376,10 +376,10 @@
 <hr>
 <h4 id="准确率与精确率"><a href="#准确率与精确率" class="headerlink" title="准确率与精确率"></a>准确率与精确率</h4><p><strong>准确率(accuracy)</strong>是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。<br><strong>精确率(precision)</strong>测量结果与被测量（约定）真值的一致程度。</p>
 <p>好像走错片场了，这是测量的概念，在上科学仪器时学的，这里回顾一下</p>
-<p><img src="/2018/09/22/衡量模型测试结果的指标/accuracy_and_precision.jpg" alt="P1"></p>
+<p><img src="/2018/09/22/衡量模型测试结果的指标/p1.jpg" alt="P1"></p>
 <h4 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h4><p><strong>precision </strong>(also called positive predictive value) is the fraction of relevant instances among the retrieved instances,</p>
 <p><strong>recall</strong> (also known as sensitivity) is the fraction of relevant instances that have been retrieved over the total amount of relevant instances.</p>
-<p><img src="/2018/09/22/衡量模型测试结果的指标/准确率.jpg" alt="P2"></p>
+<p><img src="/2018/09/22/衡量模型测试结果的指标/p2.jpg" alt="P2"></p>
 <p>以上图为例<br>精确率为：<br>$$  P = TP/(TP+FN)  $$<br>精确率是指预测正确的正类与预测的全部正类之比</p>
 <p>召回率为：<br>$$  R = TP/(TP+FP)  $$<br>召回率，就是预测正确的正类与实际正类总数之比，FN是没预测出来的正类。<br>医院要求召回率要很高，假设确诊癌症为positive，本来是癌症却没诊断出癌症，那医术实在不敢恭维。</p>
 <p>但常常精确率与召回率是互斥的，提高了精确率，召回率就低了，因此提出了F1 score<br>$$ F1 = 2PR/(P+R) $$</p>
