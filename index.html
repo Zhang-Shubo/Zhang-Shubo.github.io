@@ -285,6 +285,334 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/hyperV虚拟archlinux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Supo Zhang">
+      <meta itemprop="description" content="I'm A man who constantly to pursue self-breakthrough and not satisfy current situation">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pandora's box">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/24/hyperV虚拟archlinux/" itemprop="url">
+                  hyperV虚拟archlinux
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-24 09:07:52 / 修改时间：10:19:43" itemprop="dateCreated datePublished" datetime="2018-09-24T09:07:52+08:00">2018-09-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>很久没有体验过archlinux了，archlinux是我用过最好用的linux。升级不用重装系统，而且系统完全可自己定制，对于我这种爱折腾的人来讲最合适不过。老电脑寄回家了，手里只有一部穷人版surface，硬盘太小，不舍得装双系统，就在hyperV里体验一下吧。</p>
+<h3 id="1-Hyper-V"><a href="#1-Hyper-V" class="headerlink" title="1.Hyper-V"></a>1.Hyper-V</h3><p>Hyper-V 支持在物理主机上运行虚拟化的计算机系统。 可以像在物理计算机系统上一样使用和管理这些虚拟化的系统，但它们存在于虚拟化和隔离的环境中。 称为虚拟机监控程序的特殊软件可管理虚拟系统和物理硬件资源之间的访问权限。 虚拟化支持快速部署计算机系统、快速将系统还原为先前已知的良好状态的方法和在物理主机之间迁移系统的能力。</p>
+<h4 id="虚拟化允许你："><a href="#虚拟化允许你：" class="headerlink" title="虚拟化允许你："></a>虚拟化允许你：</h4><ul>
+<li>运行需要早期版本的 Windows 操作系统或非 Windows 操作系统的软件。</li>
+<li>实验其他操作系统。 通过 Hyper-V，可轻松创建和删除不同的操作系统。</li>
+<li>使用多个虚拟机在多个操作系统上测试软件。 通过 Hyper-V，可以在一部台式机或便携式计算机上运行所有内容。 可以将这些虚拟机导出并随后导入到任何其他 Hyper-V 系统中，包括 Azure。</li>
+</ul>
+<h4 id="一些限制限制："><a href="#一些限制限制：" class="headerlink" title="一些限制限制："></a>一些限制限制：</h4><ul>
+<li>依赖于特定硬件的程序不能在虚拟机中良好运行。 例如，需要使用 GPU 进行处理的游戏或应用程序可能无法良好运行。 依赖于子 10 毫秒计时器的应用程序（如实时音乐混合应用程序或高精度时间）在虚拟机中运行时也可能会出问题。</li>
+<li>此外，如果已启用了 Hyper-V，这些易受延迟影响的高精度应用程序在主机中运行时可能也会出问题。 这是因为在启用了虚拟化后，主机操作系统也会在 Hyper-V 虚拟化层的顶部运行，就如来宾操作系统那样。 但是，与来宾操作系统不同，主机操作系统在这点上很特殊，它是直接访问所有硬件，这意味着具有特殊硬件要求的应用程序仍然可以在主机操作系统中运行，而不会出问题。</li>
+</ul>
+<h4 id="开启Hyper-V"><a href="#开启Hyper-V" class="headerlink" title="开启Hyper-V:"></a>开启Hyper-V:</h4><ul>
+<li>右键单击 Windows 按钮并选择“应用和功能”。</li>
+<li>选择“打开或关闭 Windows 功能”。</li>
+<li>选择 Hyper-V，然后单击确定。</li>
+</ul>
+<h4 id="新建虚拟机："><a href="#新建虚拟机：" class="headerlink" title="新建虚拟机："></a>新建虚拟机：</h4><ul>
+<li>在装虚拟机之前需要新建一个虚拟交换机，用来连接网络。</li>
+<li>新建一个虚拟机，连接上虚拟交换机，挂在archlinux的ISO文件，关闭安全启动就可以开始安装arch了</li>
+</ul>
+<h3 id="2-安装archlinux"><a href="#2-安装archlinux" class="headerlink" title="2.安装archlinux"></a>2.安装archlinux</h3><h5 id="进行联网"><a href="#进行联网" class="headerlink" title="进行联网"></a>进行联网</h5><p>执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># wifi-menu</span><br></pre></td></tr></table></figure></p>
+<p>连接wifi<br>或者：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pppoe-setup</span><br></pre></td></tr></table></figure></p>
+<p>进行配置或者：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl start adsl</span><br></pre></td></tr></table></figure></p>
+<p>进行 adsl连接<br>连接完后，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ping archhlinux.org</span><br></pre></td></tr></table></figure></p>
+<p>或其他网址测试网络是否通</p>
+<h4 id="同步时间"><a href="#同步时间" class="headerlink" title="同步时间"></a>同步时间</h4><p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># timedatectl set-ntp true</span><br></pre></td></tr></table></figure></p>
+<h4 id="编辑镜像站文件"><a href="#编辑镜像站文件" class="headerlink" title="编辑镜像站文件"></a>编辑镜像站文件</h4><p>在镜像源网站加入中国的源例如清华tuna的、163的，放在mirrorlist的首行<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># nano /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure></p>
+<p>nano一些简单的命令：</p>
+<ul>
+<li>ALT+6: 复制</li>
+<li>CTRL+U: 粘贴</li>
+<li>CRTL+O: 写入文件</li>
+<li>CRTL+X: 关闭文件</li>
+</ul>
+<p>执行ctrl+x退出，提示 是否保存，输入y，回车 保存<br>完成后执行，以同步软件仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -Syy</span><br></pre></td></tr></table></figure></p>
+<h4 id="开始分区-UEFI-GPT"><a href="#开始分区-UEFI-GPT" class="headerlink" title="开始分区(UEFI+GPT)"></a>开始分区(UEFI+GPT)</h4><p>本次将为sda硬盘重新建立分区表，重新建立分区，数据会全部丢失.<br>分区方案：</p>
+<table>
+<thead>
+<tr>
+<th>分区</th>
+<th>大小</th>
+<th>挂载点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sda1</td>
+<td>200M</td>
+<td>/mnt/boot/EFI</td>
+</tr>
+<tr>
+<td>sda2</td>
+<td>200M</td>
+<td>/mnt/boot</td>
+</tr>
+<tr>
+<td>sda3</td>
+<td>20G</td>
+<td>/mnt</td>
+</tr>
+<tr>
+<td>sda4</td>
+<td>10G</td>
+<td>/mnt/home</td>
+</tr>
+</tbody>
+</table>
+<p>先查看下电脑硬盘设备，执行lsblk,如下图所示：(不同电脑设备不同，有可能会是 /dev/sdb……）<br>(有parted、fdisk两种分区方法，本次采用fdisk进行分区)</p>
+<p>用fdisk进行分区<br>（1）建立GPT分区表<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># fdisk /dev/sda1</span><br></pre></td></tr></table></figure></p>
+<p>不同电脑设备不同，有可能会是 /dev/sdb……）<br>进入fdisk交互界面：<br>输入:g 建立gpt分区表:<br>（2）建立分区<br>输入：n 添加一个分区</p>
+<p>提示让输入开始扇区(一个扇区512B，按自己要分区容量大小进行计算)<br>输入2048,回车</p>
+<p>让输入结束扇区，由于一个扇区512B，要创建200M的分区,应该输入：+200M；</p>
+<p>（3）立第二个分区：<br>输入n;<br>回车<br>输入开始扇区: 回车 （默认开始扇区即可）<br>输入结束扇区:+200M</p>
+<p>（4）建立第三个分区：<br>输入n;<br>回车<br>输入开始扇区:回车 （默认开始扇区即可）<br>输入结束扇区:直接回车(默认大那个数字)</p>
+<p>（5）输入:w 保存并退出；<br>执行:lsblk 检验分区是否正确</p>
+<h4 id="格式化分区，并挂载"><a href="#格式化分区，并挂载" class="headerlink" title="格式化分区，并挂载"></a>格式化分区，并挂载</h4><p>（1）格式化分区</p>
+<p>执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mkfs.fat -F32 /dev/sda</span><br></pre></td></tr></table></figure></p>
+<p>(格式化ESP分区)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mkfs.ext4 /dev/sda2</span><br></pre></td></tr></table></figure></p>
+<p>(格式化boot分区)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mkfs.ext4 /dev/sda3</span><br></pre></td></tr></table></figure></p>
+<p>(格式化根分区)</p>
+<p>（2）挂载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># mount /dev/sda3 /mnt</span><br><span class="line"># mkdir /mnt/boot</span><br><span class="line"># mount /dev/sda2 /mnt/boot</span><br><span class="line"># mkdir /mnt/boot/EFI</span><br><span class="line"># mount /dev/sda1 /mnt/boot/EFI</span><br></pre></td></tr></table></figure></p>
+<p>执行lsblk查看挂载是否正确</p>
+<h4 id="开始安装基本操作系统"><a href="#开始安装基本操作系统" class="headerlink" title="开始安装基本操作系统"></a>开始安装基本操作系统</h4><p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacstrap -i /mnt base base-devel1</span><br></pre></td></tr></table></figure></p>
+<p>后开始安装</p>
+<h4 id="配置基础系统"><a href="#配置基础系统" class="headerlink" title="配置基础系统"></a>配置基础系统</h4><p>（1）配置fstab</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure></p>
+<p>最好再执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># cat /mnt/etc/fstab</span><br></pre></td></tr></table></figure></p>
+<p>检查一下<br>（2）切换到新系统</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># arch-chroot /mnt /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>（3）进行本地语言设置</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># nano /etc/locale.gen</span><br></pre></td></tr></table></figure></p>
+<p>反注释（删掉前面的#）<br>en_US.UTF-8 UTF-8<br>zh_CN.UTF-8 UTF-8<br>这两个，退出保存<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># locale-gen</span><br></pre></td></tr></table></figure></p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</span><br></pre></td></tr></table></figure></p>
+<p>（4）设置时区</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure></p>
+<p>也可以执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tzselect</span><br></pre></td></tr></table></figure></p>
+<p>按照提示选择时区<br>执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># hwclock --systohc --utc</span><br></pre></td></tr></table></figure></p>
+<p>设置硬件时间</p>
+<h4 id="引导系统"><a href="#引导系统" class="headerlink" title="引导系统"></a>引导系统</h4><p>GRUB进行UEFI引导<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S dosfstools grub efibootmgr</span><br></pre></td></tr></table></figure></p>
+<p>安装引导工具</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># grub-install --target=x86_64-efi --efi-directory=/boot/EFI --recheck</span><br></pre></td></tr></table></figure></p>
+<p>进行安装grub</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></p>
+<p>进行配置grub</p>
+<h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><p>（1）设置root密码</p>
+<p>执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># passwd</span><br></pre></td></tr></table></figure></p>
+<p>（2）添加用户</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># useradd -m -g users -s /bin/bash 用户名</span><br></pre></td></tr></table></figure></p>
+<p>（务必添加一个 用户 ，否则后面sddm显示管理器登录的时候无法登录，sddm不会列出root用户）<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># passwd 用户名</span><br></pre></td></tr></table></figure></p>
+<p>为刚才添加的用户设置密码<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># nano /etc/sudoers</span><br></pre></td></tr></table></figure></p>
+<p>在 root ALL=(ALL) ALL 下面添加<br>用户名 ALL=(ALL) ALL<br>为你刚才创建的用户 添加sudo权限</p>
+<p>（3）退出chroot重启</p>
+<p>（笔记本请直接跳到下面网络配置，安装无线网络相关模块）<br>(也可以不重启，直接进行下面的网络配置和桌面环境配置）<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># exit</span><br></pre></td></tr></table></figure></p>
+<p>退出chroot<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># reboot</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>重启电脑</p>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>开机进入电脑<br>（1）有线连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable dhcpcd</span><br></pre></td></tr></table></figure></p>
+<p>root下执行不了此命令，可以省略，执行完下面的命令一会重启会自动启动dhcpcd服务）<br>启动dhcpcd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl start dhcpcd</span><br></pre></td></tr></table></figure></p>
+<p>开机自动启动dhcp服务</p>
+<p>（2）无线连接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S iw wpa_supplicant dialog</span><br></pre></td></tr></table></figure></p>
+<p>（3）ADSL 宽带连接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S rp-pppoe# pppoe-setup # systemctl start adsl</span><br></pre></td></tr></table></figure></p>
+<p>（chroot下执行不了此命令）# systemctl enable adsl</p>
+<h4 id="按需定制化"><a href="#按需定制化" class="headerlink" title="按需定制化"></a>按需定制化</h4><p>安装桌面环境</p>
+<p>（1）安装显卡驱动</p>
+<p>确定显卡型号<br>执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># lspci | grep VGA</span><br></pre></td></tr></table></figure></p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S 驱动包</span><br></pre></td></tr></table></figure></p>
+<p>官方仓库提供的驱动包:</p>
+<p>通用———————————-xf86-video-vesa<br>intel———————————-xf86-video-intel<br>Geforce7+————————–xf86-video-nouveau<br>Geforce6/7————————-xf86-video-304xx<br>hyperV ————xf86-video-fbdev</p>
+<p>（2）安装X窗口系统</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S xorg</span><br></pre></td></tr></table></figure></p>
+<p>安装X窗口系统</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S xf86-input-synaptics1</span><br></pre></td></tr></table></figure></p>
+<p>（触摸板驱动，笔记版可装，台式机就不用了）执行，虚拟机不需要<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S ttf-dejavu wqy-microhei1</span><br></pre></td></tr></table></figure></p>
+<p>安装字体：Dejavu 和 微米黑字体（不安装的话 后面进入桌面环境设置系统语言为简体中文的时候会出现字体显示不全的问题）</p>
+<p>（3）安装kde-plasma桌面环境</p>
+<p>安装　Gnome桌面环境的直接跳到第(4)步<br>（kde和gnome桌面环境自带了大部分的驱动 ，安装其他桌面环境可能需要额外配置一些驱动，比如声卡）<br>想安装其他桌面环境 参照官方<a href="https://wiki.archlinux.org/index.php/Desktop_environment" target="_blank" rel="noopener">wiki</a><br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S plasma</span><br></pre></td></tr></table></figure></p>
+<p>安装plasma</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S konsole</span><br></pre></td></tr></table></figure></p>
+<p>安装 kde下的控制台终端</p>
+<p>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S dolphin</span><br></pre></td></tr></table></figure>
+<p>安装kde下的文件管理器<br>（可以直接执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S kde-applications</span><br></pre></td></tr></table></figure>
+<p>安装kde套件，包含了常用的系统工具）<br>安装完后<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable sddm</span><br></pre></td></tr></table></figure>
+<p>启用 sddm显示管理器</p>
+<p>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable NetworkManager</span><br></pre></td></tr></table></figure>
+<p>启用网络管理</p>
+<p>执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S plasma-nm</span><br></pre></td></tr></table></figure>
+<p>安装 网络管理的前端工具（图形界面）<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># reboot</span><br></pre></td></tr></table></figure>
+<p>重启</p>
+<p>进入系统后界面如下：</p>
+<p>（4）安装Gnome桌面环境<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S gnome</span><br></pre></td></tr></table></figure>
+<p>安装gnome桌面<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S gnome-tweak-tool</span><br></pre></td></tr></table></figure>
+<p>安装gnome桌面优化工具<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S alacarte</span><br></pre></td></tr></table></figure>
+<p>安装gnome桌面菜单编辑器<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable gdm</span><br></pre></td></tr></table></figure>
+<p>启用gnome窗口管理器服务<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable NetworkManager</span><br></pre></td></tr></table></figure>
+<p>启用网络管理器服务<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># reboot</span><br></pre></td></tr></table></figure>
+<p>13.安装完后的工作</p>
+<p>（1）添加archlinuxcn源（里面包含了很多中国人常用而官方仓库又没有的软件）</p>
+<p>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># nano /etc/pacman.conf1</span><br></pre></td></tr></table></figure>
+<p>在 /etc/pacman.conf 文件末尾添加两行：</p>
+<p>[archlinuxcn]<br>SigLevel=Never<br>Server = <a href="https://mirrors.ustc.edu.cn/archlinuxcn/$arch123" target="_blank" rel="noopener">https://mirrors.ustc.edu.cn/archlinuxcn/$arch123</a></p>
+<p>（2）安装中文输入法<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S fcitx-im fcitx-configtool</span><br></pre></td></tr></table></figure>
+<p>安装输入法引擎<br>（官方仓库里的输入法：<br>fcitx-cloudpinyin<br>fcitx-googlepinyin<br>fcitx-libpinyin<br>fcitx-sunpinyin）<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># nano ~/.xprofile</span><br></pre></td></tr></table></figure>
+<p>添加一下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=&quot;@im=fcitx&quot;12345</span><br></pre></td></tr></table></figure></p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S fcitx-sogoupinyin</span><br></pre></td></tr></table></figure></p>
+<p>安装搜狗输入法</p>
+<p>（3）安装网易云音乐</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S netease-cloud-music</span><br></pre></td></tr></table></figure></p>
+<p>安装网易云音乐</p>
+<p>（4）安装yaourt使用aur</p>
+<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S yaourt</span><br></pre></td></tr></table></figure></p>
+<p>安装yarourt<br>以后可以使用yaourt 安装aur中的软件了 ，yaourt跟pacman使用方法一样<br>安装kde下的文件管理器<br>（5）安装浏览器<br>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S google-chrome</span><br></pre></td></tr></table></figure></p>
+<p>安装google浏览器（没法在线观看视频）<br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S firefox1</span><br></pre></td></tr></table></figure>
+<p>安装火狐浏览器<br>（执行: # pacman -S flashplugin 安装flas插件，否则无法在线观看视频，chrome浏览器不支持flash）</p>
+<p>（6）其他常用软件<br>可在<a href="https://wiki.archlinux.org/index.php/List_of_applications" target="_blank" rel="noopener">链接里找</a><br>进行查找</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/22/评价模型的一些指标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -637,12 +965,24 @@
                 
               
 
-              <time title="创建时间：2018-09-12 22:23:44 / 修改时间：22:49:36" itemprop="dateCreated datePublished" datetime="2018-09-12T22:23:44+08:00">2018-09-12</time>
+              <time title="创建时间：2018-09-12 22:23:44" itemprop="dateCreated datePublished" datetime="2018-09-12T22:23:44+08:00">2018-09-12</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-22 21:44:14" itemprop="dateModified" datetime="2018-09-22T21:44:14+08:00">2018-09-22</time>
               
             
           </span>
@@ -697,6 +1037,7 @@
 <li>5.9    __version__ 版本</li>
 </ul>
 <h4 id="6-init-py"><a href="#6-init-py" class="headerlink" title="6.    __init__.py"></a>6.    __init__.py</h4><p>放在文件夹内可以把文件夹名字作为类导入</p>
+<h4 id="7-map"><a href="#7-map" class="headerlink" title="7. map"></a>7. map</h4><p>map会根据给定的<strong>函数</strong>对指定的<strong>序列</strong>做映射<br>map(function, iterable)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;def square(x) :            # 计算平方数</span><br><span class="line">...     return x ** 2</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; map(square, [1,2,3,4,5])   # 计算列表各个元素的平方</span><br><span class="line">[1, 4, 9, 16, 25]</span><br><span class="line">&gt;&gt;&gt; map(lambda x: x ** 2, [1, 2, 3, 4, 5])  # 使用 lambda 匿名函数</span><br><span class="line">[1, 4, 9, 16, 25]</span><br><span class="line"></span><br><span class="line"># 提供了两个列表，对相同位置的列表数据进行相加</span><br><span class="line">&gt;&gt;&gt; map(lambda x, y: x + y, [1, 3, 5, 7, 9], [2, 4, 6, 8, 10])</span><br><span class="line">[3, 7, 11, 15, 19]</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1489,7 +1830,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
