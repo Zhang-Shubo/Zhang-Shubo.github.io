@@ -285,6 +285,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/google开源项目风格指南-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Supo Zhang">
+      <meta itemprop="description" content="I'm A man who constantly to pursue self-breakthrough and not satisfy current situation">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pandora's box">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/09/google开源项目风格指南-C/" itemprop="url">
+                  google开源项目风格指南-C++
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-09 23:25:53" itemprop="dateCreated datePublished" datetime="2019-10-09T23:25:53+08:00">2019-10-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-10 23:46:23" itemprop="dateModified" datetime="2019-10-10T23:46:23+08:00">2019-10-10</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="google开源项目风格指南-C"><a href="#google开源项目风格指南-C" class="headerlink" title="google开源项目风格指南-C++"></a>google开源项目风格指南-C++</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>自从大学开始接触c++语言（平时写的都是类C代码），断断续续的已经有7、8年过去了，但是，始终没有规范的在工程上使用C++。现在的工作主要使用python语言，更多的是关注算法，而没有关注语言本身。但是python项目也给我带来了工程经验，经验之一就是，代码是写给别人看的，大家遵守共同的编程规范很重要。所谓的编程规范，也可以称为编程风格，一开始会让新手感觉是桎梏，但随着解了越来越多的bug，写了越来越多的代码，也体会到了，编程规范的而重要性，编程规范不但是一种风格，而且是避免埋坑、减少bug的重要措施。如果大家写的代码一致性高，那阅读起来也就方便多了。</p>
+<p>在网上搜索了google的编程规范，应该是值得一读的，因为这些规范都是大厂内的有丰富工程经验的人总结出来的精华。因此，准备认真研读，并且，测试为什么这样规定。</p>
+<h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><p>一般来讲，每个cpp文件都应该对应一个.h文件（除了只包含main函数的文件），这是为了提升可读性与可维护性。一般头文件要遵守以下规范：</p>
+<ul>
+<li>头文件要加入#define保护，避免重复编译时导入；</li>
+<li>头文件只能声明变量，不能定义变量，全局的变量不可以声明，因为全局变量在声明时会初始化一个默认值。两次包含给头文件，编译时，会报重复定义的错误；</li>
+<li>头文件的包含顺序为自身头文件、c标准库、c++标准库、其他项目头文件、自身项目其他头文件；</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 为了防止被多重导入，header文件要有#define保护 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> HEADER_A_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HEADER_A_H 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 头文件里面不要定义任何变量，也不声明全局变量，全局变量会在声明时初始化为默认值</span></span><br><span class="line"><span class="comment">// C++原则-唯一定义原则(One Definition Rule), 但一个变量可以声明多次</span></span><br><span class="line"><span class="comment">//int i; //error 两次被引入会错误</span></span><br><span class="line"><span class="comment">//int j=0; //error 不能定义变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">void</span>)</span></span>; <span class="comment">// ok, declear function</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ok , declear a class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> a,b;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    A(<span class="keyword">int</span> a, <span class="keyword">int</span> b);</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* HEADER_A_H */</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/06/c-中类的相关概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2196,7 +2356,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
