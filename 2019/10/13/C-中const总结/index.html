@@ -108,28 +108,25 @@
 
 
 
-  <meta name="description" content="衡量模型测试结果的指标在衡量训练好的模型预测结果有很多，如准确率、精确率、召回率等等。刚接触这些概念的时候，总是有点懵，因此留下此文，以备他日查看。 首先介绍一些概念(参考维基百科)：  准确率与精确率准确率(accuracy)是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。精确率(precision)测量结果与被测量（约定）真值的一致程度。 好像走错">
+  <meta name="description" content="c++中const用法总结引言const在c++中是一种限定符（qualifier），用来修饰变量类型、形参类型、函数、指针、类等一系列用法，用的时候不是弄得很蒙，比如指向常量的指针（pointer to const）与常量指针（const pointer），因此在此文中区分这些用法，以及限定符的作用是什么。 基本含义const 修饰意为恒定的，不变的，当修饰变量的时候，意思是该变量在创建后是不可">
 <meta name="keywords" content="Artificial Intelligence">
 <meta property="og:type" content="article">
-<meta property="og:title" content="评价模型的一些指标">
-<meta property="og:url" content="http://yoursite.com/2018/09/22/评价模型的一些指标/index.html">
+<meta property="og:title" content="C++中const总结">
+<meta property="og:url" content="http://yoursite.com/2019/10/13/C-中const总结/index.html">
 <meta property="og:site_name" content="Pandora&#39;s box">
-<meta property="og:description" content="衡量模型测试结果的指标在衡量训练好的模型预测结果有很多，如准确率、精确率、召回率等等。刚接触这些概念的时候，总是有点懵，因此留下此文，以备他日查看。 首先介绍一些概念(参考维基百科)：  准确率与精确率准确率(accuracy)是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。精确率(precision)测量结果与被测量（约定）真值的一致程度。 好像走错">
+<meta property="og:description" content="c++中const用法总结引言const在c++中是一种限定符（qualifier），用来修饰变量类型、形参类型、函数、指针、类等一系列用法，用的时候不是弄得很蒙，比如指向常量的指针（pointer to const）与常量指针（const pointer），因此在此文中区分这些用法，以及限定符的作用是什么。 基本含义const 修饰意为恒定的，不变的，当修饰变量的时候，意思是该变量在创建后是不可">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/09/22/评价模型的一些指标/p1.JPG">
-<meta property="og:image" content="http://yoursite.com/2018/09/22/评价模型的一些指标/p2.JPG">
-<meta property="og:updated_time" content="2018-09-22T13:21:58.212Z">
+<meta property="og:updated_time" content="2019-10-13T16:53:37.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="评价模型的一些指标">
-<meta name="twitter:description" content="衡量模型测试结果的指标在衡量训练好的模型预测结果有很多，如准确率、精确率、召回率等等。刚接触这些概念的时候，总是有点懵，因此留下此文，以备他日查看。 首先介绍一些概念(参考维基百科)：  准确率与精确率准确率(accuracy)是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。精确率(precision)测量结果与被测量（约定）真值的一致程度。 好像走错">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/22/评价模型的一些指标/p1.JPG">
+<meta name="twitter:title" content="C++中const总结">
+<meta name="twitter:description" content="c++中const用法总结引言const在c++中是一种限定符（qualifier），用来修饰变量类型、形参类型、函数、指针、类等一系列用法，用的时候不是弄得很蒙，比如指向常量的指针（pointer to const）与常量指针（const pointer），因此在此文中区分这些用法，以及限定符的作用是什么。 基本含义const 修饰意为恒定的，不变的，当修饰变量的时候，意思是该变量在创建后是不可">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/22/评价模型的一些指标/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/10/13/C-中const总结/"/>
 
 
 
@@ -139,7 +136,7 @@
   };
 </script>
 
-  <title>评价模型的一些指标 | Pandora's box</title>
+  <title>C++中const总结 | Pandora's box</title>
   
 
 
@@ -288,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/22/评价模型的一些指标/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/C-中const总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Supo Zhang">
@@ -305,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">评价模型的一些指标
+          <h1 class="post-title" itemprop="name headline">C++中const总结
               
             
           </h1>
@@ -330,12 +327,24 @@
                 
               
 
-              <time title="创建时间：2018-09-22 20:53:27 / 修改时间：21:21:58" itemprop="dateCreated datePublished" datetime="2018-09-22T20:53:27+08:00">2018-09-22</time>
+              <time title="创建时间：2019-10-13 22:02:12" itemprop="dateCreated datePublished" datetime="2019-10-13T22:02:12+08:00">2019-10-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-14 00:53:37" itemprop="dateModified" datetime="2019-10-14T00:53:37+08:00">2019-10-14</time>
               
             
           </span>
@@ -368,19 +377,21 @@
       
 
       
-        <h2 id="衡量模型测试结果的指标"><a href="#衡量模型测试结果的指标" class="headerlink" title="衡量模型测试结果的指标"></a>衡量模型测试结果的指标</h2><p>在衡量训练好的模型预测结果有很多，如准确率、精确率、召回率等等。刚接触这些概念的时候，总是有点懵，因此留下此文，以备他日查看。</p>
-<p>首先介绍一些概念(参考维基百科)：</p>
-<hr>
-<h4 id="准确率与精确率"><a href="#准确率与精确率" class="headerlink" title="准确率与精确率"></a>准确率与精确率</h4><p><strong>准确率(accuracy)</strong>是指被测量的测得值与其真值的一致程度；测量准确度有时被理解为赋予被测量的测得值之间的一致程度。<br><strong>精确率(precision)</strong>测量结果与被测量（约定）真值的一致程度。</p>
-<p>好像走错片场了，这是测量的概念，在上科学仪器时学的，这里回顾一下</p>
-<p><img src="/2018/09/22/评价模型的一些指标/p1.JPG" alt="P1"></p>
-<h4 id="精确率与召回率"><a href="#精确率与召回率" class="headerlink" title="精确率与召回率"></a>精确率与召回率</h4><p><strong>precision </strong>(also called positive predictive value) is the fraction of relevant instances among the retrieved instances,</p>
-<p><strong>recall</strong> (also known as sensitivity) is the fraction of relevant instances that have been retrieved over the total amount of relevant instances.</p>
-<p><img src="/2018/09/22/评价模型的一些指标/p2.JPG" alt="P2"></p>
-<p>以上图为例<br>精确率为：<br>$$  P = TP/(TP+FN)  $$<br>精确率是指预测正确的正类与预测的全部正类之比</p>
-<p>召回率为：<br>$$  R = TP/(TP+FP)  $$<br>召回率，就是预测正确的正类与实际正类总数之比，FN是没预测出来的正类。<br>医院要求召回率要很高，假设确诊癌症为positive，本来是癌症却没诊断出癌症，那医术实在不敢恭维。</p>
-<p>但常常精确率与召回率是互斥的，提高了精确率，召回率就低了，因此提出了F1 score<br>$$ F1 = 2PR/(P+R) $$</p>
-<p>是不是很熟悉，像算电阻并联后的总电阻值，并联的电阻值小于任何一个电阻的值，但是两个一样的电阻，并联后只有一半大小，为了归一化，乘了一个2。F1值综合了P与R，只有都大时，F1才更大，单纯提高一个，效果可能不升反降。</p>
+        <h2 id="c-中const用法总结"><a href="#c-中const用法总结" class="headerlink" title="c++中const用法总结"></a>c++中const用法总结</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>const在c++中是一种限定符（qualifier），用来修饰变量类型、形参类型、函数、指针、类等一系列用法，用的时候不是弄得很蒙，比如指向常量的指针（pointer to const）与常量指针（const pointer），因此在此文中区分这些用法，以及限定符的作用是什么。</p>
+<h3 id="基本含义"><a href="#基本含义" class="headerlink" title="基本含义"></a>基本含义</h3><p>const 修饰意为恒定的，不变的，当修饰变量的时候，意思是该变量在创建后是不可修改的，因此常量的声明和定义是在一条语句内完成的。常量是指本身不可修改，但可以被拷贝，去为其他变量赋值。通常常量在编译的时候还会被字面量替代。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> bufferSize = <span class="number">512</span>; <span class="comment">// ok</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> bufferSize; <span class="comment">//error</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = getSize();</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = i; <span class="comment">// ok copy const value to a variable</span></span><br></pre></td></tr></table></figure>
+<h3 id="常量引用"><a href="#常量引用" class="headerlink" title="常量引用"></a>常量引用</h3><p>想要引用常量，必须使用常量引用（reference to const）,否则可能会改变原值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;b = a; <span class="comment">//ok,both reference and underlying object are const</span></span><br><span class="line"><span class="keyword">int</span> &amp;c = a; <span class="comment">//error unconst reference to a const object</span></span><br></pre></td></tr></table></figure>
+<p>常量引用的初始化可以是一个非常量、常量、字面量、表达式，常量只能给常量引用初始化。常量引用后面的真实引用值不一定是常量。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r1 = i; <span class="comment">//ok</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r2 = <span class="number">3</span>; <span class="comment">//ok</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r3 = r1*<span class="number">2</span>; <span class="comment">//ok</span></span><br><span class="line"><span class="keyword">int</span> &amp;r4 = <span class="number">3</span>; <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+<h3 id="常量指针与常指针"><a href="#常量指针与常指针" class="headerlink" title="常量指针与常指针"></a>常量指针与常指针</h3><p>常量指针与常量引用类似，不可以通过该引用或指针修改背后的值，但背后的值是不是常量是不确定的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">double</span> *p1 = &amp;pi; <span class="comment">//error</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> *ptr = &amp;pi; <span class="comment">// ok</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> dval = <span class="number">3.14</span>; </span><br><span class="line">ptr = &amp;dval; <span class="comment">//ok but cannt change dval through ptr</span></span><br></pre></td></tr></table></figure>
+<p>常指针是指该指针一旦绑定一个地址，就不可以再改变了，所以一定要在声明的时候初始化。做法是再*后面加const修饰符。</p>
+<ul>
+<li>常量指针是指不能改变指向的对象</li>
+<li>常指针是指不能改变指向的对象</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> b = &amp;a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *<span class="keyword">const</span> cptr = &amp;c;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -408,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/12/锦绣民俗村/" rel="next" title="锦绣民俗村">
-                <i class="fa fa-chevron-left"></i> 锦绣民俗村
+              <a href="/2019/10/09/google开源项目风格指南-C/" rel="next" title="google开源项目风格指南-C++">
+                <i class="fa fa-chevron-left"></i> google开源项目风格指南-C++
               </a>
             
           </div>
@@ -417,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/24/hyperV虚拟archlinux/" rel="prev" title="hyperV虚拟archlinux">
-                hyperV虚拟archlinux <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -530,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#衡量模型测试结果的指标"><span class="nav-number">1.</span> <span class="nav-text">衡量模型测试结果的指标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准确率与精确率"><span class="nav-number">1.0.1.</span> <span class="nav-text">准确率与精确率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#精确率与召回率"><span class="nav-number">1.0.2.</span> <span class="nav-text">精确率与召回率</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#c-中const用法总结"><span class="nav-number">1.</span> <span class="nav-text">c++中const用法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本含义"><span class="nav-number">1.2.</span> <span class="nav-text">基本含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量引用"><span class="nav-number">1.3.</span> <span class="nav-text">常量引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量指针与常指针"><span class="nav-number">1.4.</span> <span class="nav-text">常量指针与常指针</span></a></li></ol></li></ol></div>
             
 
           </div>
