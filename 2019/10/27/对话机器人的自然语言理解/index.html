@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="对话机器人中的自然语言理解简介：本人从2018年10月份从事自然语言处理行业，开始做的是语音助手。对自然语言理解有初步的了解。这是在博客里首次谈自己对自身行业的理解。 从图灵测试说对话机器人图灵测试是指：如果一台机器能够与人类展开对话（通过电传设备）而不能被辨别出其机器身份，那么称这台机器具有智能。 这也是“智能”的定义，图灵测试为什么要采用对话的方式？而不是采用可以计算圆周率的100万位，判断一">
+<meta name="keywords" content="NLU,BOT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对话机器人的自然语言理解">
+<meta property="og:url" content="http://yoursite.com/2019/10/27/对话机器人的自然语言理解/index.html">
+<meta property="og:site_name" content="Pandora&#39;s box">
+<meta property="og:description" content="对话机器人中的自然语言理解简介：本人从2018年10月份从事自然语言处理行业，开始做的是语音助手。对自然语言理解有初步的了解。这是在博客里首次谈自己对自身行业的理解。 从图灵测试说对话机器人图灵测试是指：如果一台机器能够与人类展开对话（通过电传设备）而不能被辨别出其机器身份，那么称这台机器具有智能。 这也是“智能”的定义，图灵测试为什么要采用对话的方式？而不是采用可以计算圆周率的100万位，判断一">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-27T10:46:07.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对话机器人的自然语言理解">
+<meta name="twitter:description" content="对话机器人中的自然语言理解简介：本人从2018年10月份从事自然语言处理行业，开始做的是语音助手。对自然语言理解有初步的了解。这是在博客里首次谈自己对自身行业的理解。 从图灵测试说对话机器人图灵测试是指：如果一台机器能够与人类展开对话（通过电传设备）而不能被辨别出其机器身份，那么称这台机器具有智能。 这也是“智能”的定义，图灵测试为什么要采用对话的方式？而不是采用可以计算圆周率的100万位，判断一">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/27/对话机器人的自然语言理解/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>对话机器人的自然语言理解 | Pandora's box</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Pandora's box</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Supo's Blogs</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/对话机器人的自然语言理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Supo Zhang">
+      <meta itemprop="description" content="I'm A man who constantly to pursue self-breakthrough and not satisfy current situation">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pandora's box">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">对话机器人的自然语言理解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-27 12:21:42 / 修改时间：18:46:07" itemprop="dateCreated datePublished" datetime="2019-10-27T12:21:42+08:00">2019-10-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="对话机器人中的自然语言理解"><a href="#对话机器人中的自然语言理解" class="headerlink" title="对话机器人中的自然语言理解"></a>对话机器人中的自然语言理解</h1><p>简介：本人从2018年10月份从事自然语言处理行业，开始做的是语音助手。对自然语言理解有初步的了解。这是在博客里首次谈自己对自身行业的理解。</p>
+<h2 id="从图灵测试说对话机器人"><a href="#从图灵测试说对话机器人" class="headerlink" title="从图灵测试说对话机器人"></a>从图灵测试说对话机器人</h2><p>图灵测试是指：如果一台机器能够与人类展开对话（通过电传设备）而不能被辨别出其机器身份，那么称这台机器具有智能。 这也是“智能”的定义，图灵测试为什么要采用对话的方式？而不是采用可以计算圆周率的100万位，判断一张图片里面是什么，或者把一段语音转化成文字。</p>
+<p>这可以从语言说起，语言是区分人类和动物的重要标志，也是人具有高级智慧的象征。如果机器可以与人能够正常的对话，那我们确实可以说这个机器是智能的。</p>
+<p>对话任务为什么比计算任务、分类任务和序列转化任务更难，甚至如果机器掌握的对话任务，就可以认为机器是智能的呢？</p>
+<ul>
+<li>计算任务，计算任务是计算机的最基础的能力，具有逻辑计算能力（与或非）、数字计算能力（加法器），最简单的单片机都具有这个能力，因此不能算是智能的标志。</li>
+<li>分类任务，分类任务基于计算任务，只不过这个任务稍微复杂一些，是通过合理的建模，将输入映射到0~N空间。</li>
+<li>序列转化任务是指序列标注、翻译、语言转文字等时序任务，如果不考虑时序，一些任务就会变得很糟糕，例如语音转文字中，一个读音可能对应多个文字，无法判断是哪个读音。在深度学习之前，这种时序性是通过马尔可夫模型解决的。可以说马尔可夫模型本身具有简单的推理能力，比如duihua，大概率是译成对话，而不是对画。但是这个推理还是在文字这个函数空间里面的，是有限定域的。</li>
+</ul>
+<p>对话任务就比较复杂了，不但需要知识（数据库）、理解（NLU）、判断（分类），还需求高阶的推理能力，还要具有一定的情商，情商都需要哪些能力，还有待进一步探究。单说高阶的推理能力，足以否定市面上所有的机器人都不是人工智能。</p>
+<p>丑话都说在前头了，目前人工智能远远达不到普通人的预期，但是在科研圈里还是很认可，对话机器人已经有了很大的进步。如果说对话机器人是自然语言处理的一个分支，那么推理能力是目前自然语言处理领域发展道路上的一个拦路虎。包括这两年横空出世的预处理模型，也是旨在解决语言中上下文的一个推理能力。</p>
+<h2 id="对话机器人技术剖析"><a href="#对话机器人技术剖析" class="headerlink" title="对话机器人技术剖析"></a>对话机器人技术剖析</h2><p>说对话机器人是NLP领域皇冠上的明珠也是丝毫不过分的，因为涉及了NLP技术的方方面面，从基础的分词、命名实体识别，再到语义理解，对话管理，自然语言生成。中间插一句，这些技术都是应用在对话的各个阶段，前提是语音转化成文字，那能不能搞一个端到端的模型，直接从语音到语义呢？在搞一个模型，从语义到语音，中间就省下了一大堆步骤。这个是有可能的，从人类的角度，世界上是有很多语言没有文字的，而说这些语言的人也都是可以正常的交流表达复杂的观点。而且也有研究是这样做了，暂时识别的范围没有非端到端的模型好，但精度是高一些的。</p>
+<p>暂时不提speech2meaning这种端到端的技术，对话机器人全流程可以分为5个层次，从上到下分别是用户层、语音层、语义层、对话层、数据层。</p>
+<ul>
+<li>用户层， 有两个实体，一个是用户及其所处的环境，一个是虚拟的对话机器人（chatbot）或者称为智能体（Agent）。</li>
+<li>语音层，两个功能，分别是语音转文字和文字转语音，这两个是语音识别的范畴，此篇文章不赘述。</li>
+<li>语义层，用户文本的浅层理解，以及将系统动作转化为回复话术，在这一层。</li>
+<li>对话层，包括两个功能，对话状态跟踪、动作策略。</li>
+<li>数据层，里面存储结构化知识库，例如知识图谱或某领域的数据库，例如火车时刻表。</li>
+</ul>
+<p>对话机器人按技术可分为三类，一类是任务型对话机器人（task-oriented）,是严格按照以上步骤来做的，如果不涉及知识，数据层是可以省略的。一类是检索型对话机器人，可以认为略过第三层语义层和第四层对话层，数据库内存储的是QA对，遇到一个用户话术，就检索出一个答案，回复给用户。一类是基于知识图谱问答机器人，对话层的处理比较少。每种技术都有其优缺点，但是</p>
+<p>按类型可以分为，任务型、问答、闲聊，技术可以选择以上任何一种或者几种的集合。值得一提的是，在工业界，大部分语音助手以上几种技术都有涉及，类型也都覆盖全面。</p>
+<h2 id="语义层与对话层"><a href="#语义层与对话层" class="headerlink" title="语义层与对话层"></a>语义层与对话层</h2><p>今天我们重点的聊的就是语义层与对话层，之所以叫语义层（NLU）和对话层（DM），是行业内都这么称呼。其实这两侧的任务都是自然语言理解，只不过语义层做简单的自然语言理解（我们这样规定），对话层做的是语义推理。举个例子，对话状态跟踪器，是根据历史对话，当前语义，推理当前的对话状态；策略模块是根据当前对话状态，给出系统应该采取什么样的动作。</p>
+<p>对话机器人的技术难点也就在对话层了，因为语义层可以归为分类任务（槽位提取可归为序列标注任务），而对话层做的是推理任务，下承接数据库，上考虑用户所处的环境，以及用户的语义信息。行业中目前的语音助手水平，对话管理的技术水平都不高，或者学术中也是对话推理的研究也没有到达很智能的水平，或许这就是行业的瓶颈，如果能够突破对话管理技术，相信对话机器人会被更多普通人接受为人工智能助理，而不是人工智障。</p>
+<h2 id="对话推理的方向"><a href="#对话推理的方向" class="headerlink" title="对话推理的方向"></a>对话推理的方向</h2><ul>
+<li>知识库的扩充与统一检索，人是如何快速根据已有知识进行推理的呢？</li>
+<li>环境信息的编码，如何将环境信息编码在语义中，去影响对话的推理呢？</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NLU/" rel="tag"># NLU</a>
+          
+            <a href="/tags/BOT/" rel="tag"># BOT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/22/sed命令总结/" rel="next" title="sed命令详解">
+                <i class="fa fa-chevron-left"></i> sed命令详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Supo Zhang</p>
+              <p class="site-description motion-element" itemprop="description">I'm A man who constantly to pursue self-breakthrough and not satisfy current situation</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对话机器人中的自然语言理解"><span class="nav-number">1.</span> <span class="nav-text">对话机器人中的自然语言理解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从图灵测试说对话机器人"><span class="nav-number">1.1.</span> <span class="nav-text">从图灵测试说对话机器人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对话机器人技术剖析"><span class="nav-number">1.2.</span> <span class="nav-text">对话机器人技术剖析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语义层与对话层"><span class="nav-number">1.3.</span> <span class="nav-text">语义层与对话层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对话推理的方向"><span class="nav-number">1.4.</span> <span class="nav-text">对话推理的方向</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Supo Zhang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
